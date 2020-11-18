@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +42,30 @@ public class SellerDaoJDBC implements SellerDao {
 			ps.setInt(5, seller.getDepartment().getid());
 
 			ps.executeUpdate();
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+
+	}
+	
+	public ResultSet insertReturningId(Seller seller) {
+
+		PreparedStatement ps = null;
+
+		try {
+
+			String sql = "INSERT INTO seller (Name, Email, BirthDate, BaseSalary, DepartmentId) VALUES(?, ?, ?, ?, ?)";
+			ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+			ps.setString(1, seller.getName());
+			ps.setString(2, seller.getEmail());
+			ps.setDate(3, new Date(seller.getBirthDate().getTime()));
+			ps.setDouble(4, seller.getBaseSalary());
+			ps.setInt(5, seller.getDepartment().getid());
+
+			ps.executeUpdate();
+			
+			return ps.getGeneratedKeys();
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
 		}
