@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 import model.entities.Department;
@@ -13,5 +14,6 @@ public interface SellerDao {
 	public Seller findById(Integer id);
 	public List<Seller> findAll();
 	public List<Seller> findByDepartment(Department dep);
+	public ResultSet insertReturningId(Seller seller);
 	
 }
