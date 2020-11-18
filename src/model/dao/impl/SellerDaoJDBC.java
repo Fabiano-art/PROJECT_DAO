@@ -102,7 +102,6 @@ public class SellerDaoJDBC implements SellerDao {
 				
 				dep.setid(rs.getInt("DepartmentId"));
 				dep.setName(rs.getString("DepName"));
-				
 				sel.setDepartment(dep);
 				
 				list.add(sel);
