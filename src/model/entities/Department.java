@@ -16,7 +16,7 @@ public class Department implements Serializable {
 
 	public Department(Integer id, String name) {
 		super();
-		id = id;
+		this.id = id;
 		this.name = name;
 	}
 
@@ -25,7 +25,7 @@ public class Department implements Serializable {
 	}
 
 	public void setid(Integer id) {
-		id = id;
+		this.id = id;
 	}
 
 	public String getName() {
