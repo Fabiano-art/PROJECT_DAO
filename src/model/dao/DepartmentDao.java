@@ -1,8 +1,10 @@
 package model.dao;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 import model.entities.Department;
+import model.entities.Seller;
 
 public interface DepartmentDao {
 	
@@ -11,5 +13,6 @@ public interface DepartmentDao {
 	public void deleteById (Integer id);
 	public Department findById(Integer id);
 	public List<Department> findAll();
+	public ResultSet insertReturningId(Department department);
 	
 }

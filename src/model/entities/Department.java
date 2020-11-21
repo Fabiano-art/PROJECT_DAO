@@ -19,6 +19,12 @@ public class Department implements Serializable {
 		this.id = id;
 		this.name = name;
 	}
+	
+	public Department(String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 
 	public Integer getid() {
 		return id;

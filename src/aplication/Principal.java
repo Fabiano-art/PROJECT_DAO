@@ -1,18 +1,26 @@
 package aplication;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+
 import model.dao.DaoFactory;
-import model.dao.SellerDao;
-import model.entities.Seller;
+import model.dao.DepartmentDao;
+import model.entities.Department;
 
 public class Principal {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException, SQLException {
+
+		DepartmentDao depDao = DaoFactory.createDepartmentDao();
 		
-		SellerDao selDao = DaoFactory.createSellerDao();
+		Department dep = new Department("Avante tricoloss");
 		
-		Seller sel = selDao.findById(8);
+		ResultSet rs = depDao.insertReturningId(dep);
 		
-		System.out.println(sel);
+		while(rs.next()) {
+			System.out.println(rs.getInt(1));
+		}
 	}
 
 }
